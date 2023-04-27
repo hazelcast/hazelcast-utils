@@ -1,6 +1,6 @@
 # Overview
 
-This project contains utility code to simplify connectinf to Viridian. To use this library, you will need to download and build the project 
+This project contains utility code to simplify connecting to Viridian. To use this library, you will need to download and build the project 
 in your local environment.  It is not published to an external maven 
 repository.
 
