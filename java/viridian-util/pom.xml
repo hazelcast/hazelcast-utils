@@ -5,7 +5,7 @@
 
     <groupId>hazelcast.platform.solutions</groupId>
     <artifactId>viridan-util</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
