@@ -14,7 +14,7 @@ You can reference the dependency in your other projects as show below.
 <dependency>
     <groupId>hazelcast.platform.solutions</groupId>
     <artifactId>viridan-util</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.1.1</version>
 </dependency>
 ```
 
@@ -29,7 +29,7 @@ the connection information to `ViridianConnection.configure`.
 This library, and its Python companion library use the artifacts 
 obtained from the Viridian advanced configuration page.  You will need to 
 download and unzip the keystore file and you will also need the 
-cluster id, discovery token an key store password.  These are all 
+cluster id, discovery token and key store password.  These are all 
 available on the advanced connection page. See below.
 
 ![connect_1](resources/connect_1.png)
