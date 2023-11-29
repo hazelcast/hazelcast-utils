@@ -24,14 +24,32 @@ public class ViridianConnection {
         return result;
     }
 
-    /*
-     * Looks for Viridian configuration in the environment
+
+    /**
+     * Looks for the environment variables that are used to
+     * specify Viridian connection information.
+     * @return true if Viridian configuration is present, false otherwise
      */
     public static boolean viridianConfigPresent(){
         String secretsDir = System.getenv(VIRIDIAN_SECRETS_DIR_PROP);
         return secretsDir != null;
     }
 
+    /**
+     * Modifies the passed ClientConfig instance with the TLS paramters needed to
+     * connect to Virdian based on the following environment variables.
+     *
+     * VIRIDIAN_SECRETS_DIR   The location of client.keystore and client.truststore.
+     *                        If VIRIDIAN_SECRETS_DIR/config.yaml exists, all of the other TLS parameters will be
+     *                        obtained from there.
+     *
+     * VIRIDIAN_CLUSTER_ID       The name of the target cluster within the Viridian account
+     * VIRIDIAN_DISCOVERY_TOKEN  The Viridian discovery token for the targeted cluster
+     * VIRIDIAN_PASSWORD         The password that protects the keystore and truststore
+     *
+     * @param clientConfig the base configuration that will be used to connect
+     *                     to Viridian.  This instance will be modified!
+     */
     public static void configureFromEnvironment(ClientConfig clientConfig){
         String secretsDir = getRequiredEnv(VIRIDIAN_SECRETS_DIR_PROP);
         String password;
@@ -78,6 +96,17 @@ public class ViridianConnection {
         configure(clusterId, discoveryToken, password, secretsDir, clientConfig);
     }
 
+    /**
+     * Modifies the passed ClientConfig instance with the TLS paramters needed to
+     * connect to Virdian
+     *
+     * @param clusterId    the Viridian cluster id
+     * @param discoveryToken the Viridian discovery token
+     * @param password     the password for the trust store and key store
+     * @param secretsDir   the directory containing the trust store and key store, which must be named
+     *                     client.truststore" and "client.keystore" respectively.
+     * @param clientConfig the base client connection configuration.  This instance will be modified!
+     */
     public static void configure(String clusterId, String discoveryToken, String password, String secretsDir, ClientConfig clientConfig){
         File configDir = new File(secretsDir);
         if (!configDir.isDirectory()){
