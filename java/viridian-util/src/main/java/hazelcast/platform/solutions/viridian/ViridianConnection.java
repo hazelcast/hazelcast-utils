@@ -36,7 +36,7 @@ public class ViridianConnection {
     }
 
     /**
-     * Modifies the passed ClientConfig instance with the TLS paramters needed to
+     * Modifies the passed ClientConfig instance with the TLS parameters needed to
      * connect to Virdian based on the following environment variables.
      *
      * VIRIDIAN_SECRETS_DIR   The location of client.keystore and client.truststore.
